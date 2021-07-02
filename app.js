@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const validateShortUrl = require('./utils/validateShortUrl');
@@ -30,6 +31,9 @@ const app = express();
 
 // Middleware
 
+// enabling cors
+app.use(cors());
+app.options('*', cors());
 // body parsing
 // support parsing of application/json type post data
 app.use(express.json());

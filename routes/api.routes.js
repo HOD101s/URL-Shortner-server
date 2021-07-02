@@ -14,7 +14,7 @@ router.post('/shorten', async (req, res) => {
 	// check if long_url exists in db
 	const longUrlInDb = await dao.longUrlInDb(req.body.long_url);
 	if (longUrlInDb) {
-		console.log('Fetching from Db');
+		// console.log('Fetching from Db');
 		return res
 			.status(200)
 			.json({ short_url: longUrlInDb.short_url, long_url: longUrlInDb.long_url });
@@ -22,7 +22,7 @@ router.post('/shorten', async (req, res) => {
 
 	// add new url to db
 	const addUrlResponse = await dao.addUrl(req.body.long_url, process.env.BASE_URL);
-	console.log(addUrlResponse);
+	// console.log(addUrlResponse);
 
 	// if insertion failed
 	if (!addUrlResponse) {

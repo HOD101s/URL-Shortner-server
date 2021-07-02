@@ -1,4 +1,5 @@
 const express = require('express');
+const compression = require('compression');
 const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
@@ -20,9 +21,10 @@ try {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 		keepAlive: true,
+		useCreateIndex: true,
 	});
 } catch (e) {
-	console.log('Failed to connect to mongo');
+	// console.log('Failed to connect to mongo');
 }
 
 // express app
@@ -30,6 +32,8 @@ const app = express();
 
 // Middleware
 
+// gzip compression
+app.use(compression());
 // enabling cors
 app.use(cors());
 app.options('*', cors());
@@ -54,5 +58,5 @@ app.use('/', router404);
 // Server
 // Starting server on specified port
 app.listen(PORT, () => {
-	console.log(`Server running on Port ${PORT}`);
+	// console.log(`Server running on Port ${PORT}`);
 });

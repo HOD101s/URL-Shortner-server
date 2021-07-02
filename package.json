@@ -2,13 +2,16 @@
 	"name": "urlshortner",
 	"version": "1.0.0",
 	"description": "Url Shortner with NodeJS",
-	"main": "app.js",
+	"main": "index.js",
 	"author": "Manas Acharya",
 	"license": "MIT",
 	"scripts": {
-		"start": "nodemon app.js"
+		"start": "nodemon — exec babel-node"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.14.6",
+		"@babel/node": "^7.14.7",
+		"@babel/preset-env": "^7.14.7",
 		"nodemon": "^2.0.9"
 	},
 	"dependencies": {

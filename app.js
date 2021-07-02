@@ -1,11 +1,27 @@
 const express = require('express');
 const morgan = require('morgan');
+// const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+require('dotenv').config();
 
 // express Routers
 const apiRoutes = require('./routes/api.routes');
 
 // Constant port for service
 const PORT = 5000;
+
+// connect to mongo
+try {
+	mongoose.Promise = global.Promise;
+	mongoose.connect(process.env.MONGODB_URI, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+		keepAlive: true,
+		autoIndex: false,
+	});
+} catch (e) {
+	console.log('Failed to connect to mongo');
+}
 
 // express app
 const app = express();
@@ -14,9 +30,9 @@ const app = express();
 
 // body parsing
 // support parsing of application/json type post data
-app.use(bodyParser.json());
+app.use(express.json());
 //support parsing of application/x-www-form-urlencoded post data
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 // logger
 app.use(morgan('tiny'));

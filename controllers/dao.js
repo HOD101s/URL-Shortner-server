@@ -4,7 +4,6 @@ const { nanoid } = require('nanoid');
 const longUrlInDb = async (url) => {
 	try {
 		const data = await Url.findOne({ long_url: url }).exec();
-		console.log(data);
 
 		// modify expiry for url
 		if (data) {
@@ -36,7 +35,9 @@ const addUrl = async (long_url, base_url) => {
 
 const getLongUrl = async (short_url_code) => {
 	try {
-		return await Url.findOne({ short_code: short_url_code }).exec();
+		const data = await Url.findOne({ short_code: short_url_code }).exec();
+		await Url.updateOne({ _id: data._id }, { $inc: { clicks: 1 } }).exec();
+		return data;
 	} catch (e) {
 		return;
 	}

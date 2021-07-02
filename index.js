@@ -20,7 +20,6 @@ try {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 		keepAlive: true,
-		autoIndex: false,
 	});
 } catch (e) {
 	console.log('Failed to connect to mongo');

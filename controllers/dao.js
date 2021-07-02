@@ -14,6 +14,7 @@ const longUrlInDb = async (url) => {
 		return data;
 	} catch (e) {
 		console.log(e);
+		return;
 	}
 };
 
@@ -29,11 +30,20 @@ const addUrl = async (long_url, base_url) => {
 		}).save();
 	} catch (e) {
 		console.log(e);
-		return undefined;
+		return;
+	}
+};
+
+const getLongUrl = async (short_url_code) => {
+	try {
+		return await Url.findOne({ short_code: short_url_code }).exec();
+	} catch (e) {
+		return;
 	}
 };
 
 module.exports = {
 	longUrlInDb,
 	addUrl,
+	getLongUrl,
 };

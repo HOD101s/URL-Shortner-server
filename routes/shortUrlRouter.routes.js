@@ -3,7 +3,6 @@ const router = express.Router();
 const dao = require('../controllers/dao');
 
 router.get('/', async (req, res) => {
-	console.log(req.originalUrl);
 	const data = await dao.getLongUrl(req.originalUrl.slice(1));
 	if (!data) {
 		res.status(404);

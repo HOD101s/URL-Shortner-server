@@ -1,11 +1,13 @@
 const express = require('express');
 const morgan = require('morgan');
-// const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const validateShortUrl = require('./utils/validateShortUrl');
 require('dotenv').config();
 
 // express Routers
 const apiRoutes = require('./routes/api.routes');
+const shortUrlRouter = require('./routes/shortUrlRouter.routes');
+const router404 = require('./routes/router404');
 
 // Constant port for service
 const PORT = 5000;
@@ -40,6 +42,11 @@ app.use(morgan('tiny'));
 // Routers
 // adding api router
 app.use('/api', apiRoutes);
+// adding re-routing Router
+app.use('/:id', validateShortUrl, shortUrlRouter);
+
+// 404
+app.use('/', router404);
 
 // Server
 // Starting server on specified port

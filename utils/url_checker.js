@@ -1,4 +1,4 @@
-const urlCheck = (url) => {
+module.exports = urlCheck = (url) => {
 	try {
 		new URL(url);
 		return true;
@@ -6,5 +6,3 @@ const urlCheck = (url) => {
 		return false;
 	}
 };
-
-module.exports = urlCheck;

@@ -1,0 +1,17 @@
+{
+  "name": "urlshortner",
+  "version": "1.0.0",
+  "description": "Url Shortner with NodeJS",
+  "main": "app.js",
+  "author": "Manas Acharya",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

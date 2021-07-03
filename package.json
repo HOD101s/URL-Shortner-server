@@ -6,7 +6,8 @@
 	"author": "Manas Acharya",
 	"license": "MIT",
 	"scripts": {
-		"start": "nodemon — exec babel-node"
+		"start": "nodemon — exec babel-node",
+		"production": "export NODE_ENV=production | pm2 start index.js"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.14.6",

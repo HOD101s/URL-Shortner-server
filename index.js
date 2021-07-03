@@ -2,6 +2,8 @@ const express = require('express');
 const compression = require('compression');
 const cors = require('cors');
 const morgan = require('morgan');
+const fs = require('fs');
+const path = require('path');
 const mongoose = require('mongoose');
 const validateShortUrl = require('./utils/validateShortUrl');
 require('dotenv').config();
@@ -44,7 +46,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // logger
-app.use(morgan('tiny'));
+if (app.get('NODE_ENV') == 'production') {
+	const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
+		flags: 'a',
+	});
+	app.use(morgan('combined', { stream: accessLogStream }));
+} else {
+	app.use(morgan('tiny'));
+}
 
 // Routers
 // adding api router

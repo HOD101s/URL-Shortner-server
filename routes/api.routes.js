@@ -21,7 +21,7 @@ router.post('/shorten', async (req, res) => {
 	}
 
 	// add new url to db
-	const addUrlResponse = await dao.addUrl(req.body.long_url, process.env.BASE_URL);
+	const addUrlResponse = await dao.addUrl(req.body.long_url, req.headers.origin);
 	// console.log(addUrlResponse);
 
 	// if insertion failed

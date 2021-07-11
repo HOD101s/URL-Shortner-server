@@ -1,8 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const { nanoid } = require('nanoid');
+const { customAlphabet } = require('nanoid');
 const urlCheck = require('../utils/url_checker');
 const dao = require('../controllers/dao');
+
+const nanoid = customAlphabet(
+	'12345678890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+	10,
+);
 
 // POST /shorten
 // adds new url to db

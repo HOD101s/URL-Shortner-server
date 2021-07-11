@@ -5,7 +5,6 @@ const morgan = require('morgan');
 const fs = require('fs');
 const path = require('path');
 const mongoose = require('mongoose');
-const validateShortUrl = require('./utils/validateShortUrl');
 require('dotenv').config();
 
 // express Routers

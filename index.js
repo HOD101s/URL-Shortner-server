@@ -10,7 +10,6 @@ require('dotenv').config();
 
 // express Routers
 const apiRoutes = require('./routes/api.routes');
-const shortUrlRouter = require('./routes/shortUrlRouter.routes');
 const router404 = require('./routes/router404');
 
 // Constant port for service

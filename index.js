@@ -58,8 +58,6 @@ if (app.get('NODE_ENV') == 'production') {
 // Routers
 // adding api router
 app.use('/api', apiRoutes);
-// adding re-routing Router
-app.use('/:id', validateShortUrl, shortUrlRouter);
 
 // 404
 app.use('/', router404);

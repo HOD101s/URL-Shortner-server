@@ -34,4 +34,22 @@ router.post('/shorten', async (req, res) => {
 		.json({ short_url: addUrlResponse.short_url, long_url: addUrlResponse.long_url });
 });
 
+// GET /redirection/short_url_code
+// gets original url from db
+router.get('/redirection/:code', async (req, res) => {
+	// check in db
+	const data = await dao.getLongUrl(req.params.code);
+
+	// if not in db
+	if (!data) {
+		res.status(404);
+		res.json('Invalid Resource');
+		res.end();
+		return;
+	}
+
+	// redirect to original url
+	return res.redirect(data.long_url);
+});
+
 module.exports = router;

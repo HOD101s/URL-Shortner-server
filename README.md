@@ -1,4 +1,6 @@
-# URL Shortner API
+# URL Shortner Server
+
+You can find the complete project [here](https://github.com/HOD101s/URL-Shortner). This backend service is a submodule of the larger URL Shortner Web App.
 
 ## Stack
 
